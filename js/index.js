@@ -151,7 +151,7 @@ reset.addEventListener("click", refresh);
 
 // Countdown timer section 
 let timer;
-let seconds = 5;
+let seconds = 60;
 
 function countdownTimer() {
   if(seconds < 60) {
@@ -162,7 +162,21 @@ function countdownTimer() {
   } else {
      clearInterval(timer);
     //  end the quiz, display the score and highlight correct answers
-    
+    quizArray.map((quizItem, index) => {
+      for (let i = 0; i < 4; i++) {
+        //highlight the li if it is the correct answer
+        let li = `li_${index}_${i}`;
+        
+        let r = `radio_${index}_${i}`;
+        
+        liElement = document.querySelector('#' + li);
+        radioElement = document.querySelector('#' + r);
+        if (quizItem.a == i) {
+          //change background color of li element here
+          liElement.style.background = "green";
+        }
+      }
+    });
   }
 }
 
